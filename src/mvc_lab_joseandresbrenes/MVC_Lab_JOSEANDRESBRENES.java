@@ -7,7 +7,7 @@ package mvc_lab_joseandresbrenes;
 
 /**
  *
- * @author samoy
+ * @author jabre
  */
 public class MVC_Lab_JOSEANDRESBRENES {
 
