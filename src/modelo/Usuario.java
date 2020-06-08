@@ -19,6 +19,10 @@ public class Usuario {
         this.contraseña = contraseña;
     }
     
+    public Usuario(){
+    
+    }
+    
     public String getNombre() {
         return nombre;
     }
