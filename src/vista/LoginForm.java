@@ -17,6 +17,18 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
+    
+    public boolean logInDatosCorrectos(){
+    return true;
+    }
+    
+    public void abrirVentanaAnterior(LoginForm ventanaAnterior){
+    ventanaAnterior.setVisible(true);
+    }
+    
+    public void cancelarInicioSesion(){
+    System.exit(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +51,12 @@ public class LoginForm extends javax.swing.JFrame {
         lbNombreUsuario.setText("Usuario");
 
         lbContraseña.setText("Contraseña");
+
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsuarioActionPerformed(evt);
+            }
+        });
 
         btCancelarLogin.setText("cancelar login");
         btCancelarLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -96,8 +114,12 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCancelarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarLoginActionPerformed
-        // TODO add your handling code here:
+          // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarLoginActionPerformed
+
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,11 +157,11 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelarLogin;
-    private javax.swing.JButton btIniciarLogin;
+    public javax.swing.JButton btCancelarLogin;
+    public javax.swing.JButton btIniciarLogin;
     private javax.swing.JLabel lbContraseña;
     private javax.swing.JLabel lbNombreUsuario;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtNombreUsuario;
+    public javax.swing.JPasswordField txtContraseña;
+    public javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

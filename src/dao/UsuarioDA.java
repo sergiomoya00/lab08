@@ -12,13 +12,13 @@ import modelo.Usuario;
  *
  * @author jabre
  */
-public interface claseUsuarioDAO {
+public interface UsuarioDA {
 
     Usuario iniciarSesion(Usuario usuario);
 
     boolean restaurarContraseña(String nombreUsuario);
 
-    ArrayList<Usuario> carfarListaUsuarios();
+    ArrayList<Usuario> cargarListaUsuarios();
 
     boolean cambiarContraseña(String nombreUsuario, String contraseña, String contraseñaNueva);
 
