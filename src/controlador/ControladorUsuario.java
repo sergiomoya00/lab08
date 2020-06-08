@@ -5,11 +5,12 @@
  */
 package controlador;
 
-import dao.UsuarioDAO;
 import modelo.Usuario;
 import vista.LoginForm;
 import javax.swing.*;
 import java.awt.event.*;
+import dao.UsuarioDA;
+import dao.UsuarioDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.awt.event.*;
 public class ControladorUsuario {
 
     public LoginForm vista;
-    public UsuarioDAO dao;
+    public UsuarioDA dao;
     public Usuario modelo;
 
     public ControladorUsuario(LoginForm pVista, Usuario pModelo) {
