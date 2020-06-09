@@ -20,7 +20,9 @@ import modelo.Usuario;
  * @author jabre
  */
 public class UsuarioDAO implements UsuarioDA {
-
+    
+    
+    ArrayList<Usuario> array=new  ArrayList<>();
     Conexion conexion = new Conexion();
     Connection cin = conexion.getConnection();
     PreparedStatement ps;
@@ -58,7 +60,6 @@ public class UsuarioDAO implements UsuarioDA {
         usuario.setNombre(nombreUsuario);
         usuario.setContraseña(contraseña);
         if(iniciarSesion(usuario)!=null){
-        java.sql.Connection conectar = null;
         String poi = "UPDATE usuario SET contraseña='"+contraseñaNueva+"' WHERE usuario='"+nombreUsuario+"'";
         try {
 
@@ -76,7 +77,26 @@ public class UsuarioDAO implements UsuarioDA {
 
     @Override
     public ArrayList<Usuario> cargarListaUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Usuario usuario=new Usuario();
+    try{
+        ResultSet rs=null;
+        String login = "select * from usuario";
+        ps=cin.prepareStatement(login);
+        rs=ps.executeQuery();
+        
+        while(rs.next()){
+        usuario.setNombre(rs.getString("usuario"));
+        usuario.setContraseña(rs.getString("contraseña"));
+        array.add(usuario);
+        }
+          
+        }
+      
+        catch(SQLException ex){
+        
+        }
+        return array;
+         //To change body of generated methods, choose Tools | Templates.
     }
 
 }
