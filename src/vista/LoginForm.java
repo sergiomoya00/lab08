@@ -5,11 +5,19 @@
  */
 package vista;
 
+import controlador.ControladorUsuario;
+import dao.UsuarioDAO;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+
 /**
  *
  * @author jabre
  */
 public class LoginForm extends javax.swing.JFrame {
+
+    private String username;
+    private String password;
 
     /**
      * Creates new form LoginForm
@@ -17,17 +25,25 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
-    
-    public boolean logInDatosCorrectos(){
-    return true;
+
+    public boolean logInDatosCorrectos() {
+        return true;
     }
-    
-    public void abrirVentanaAnterior(LoginForm ventanaAnterior){
-    ventanaAnterior.setVisible(true);
+
+    public void extraerInfo() {
+
+        username = txtNombreUsuario.getText();
+        password = String.valueOf(txtContraseña.getPassword());
+        Usuario user = new Usuario(username, password);
+        UsuarioDAO.getInstance().iniciarSesion(user);
     }
-    
-    public void cancelarInicioSesion(){
-    System.exit(0);
+
+    public void abrirVentanaAnterior(LoginForm ventanaAnterior) {
+        ventanaAnterior.setVisible(true);
+    }
+
+    public void cancelarInicioSesion() {
+        System.exit(0);
     }
 
     /**
@@ -66,6 +82,11 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         btIniciarLogin.setText("Iniciar Login");
+        btIniciarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIniciarLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,12 +135,16 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCancelarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarLoginActionPerformed
-          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarLoginActionPerformed
 
     private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
+    private void btIniciarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarLoginActionPerformed
+        extraerInfo();
+    }//GEN-LAST:event_btIniciarLoginActionPerformed
 
     /**
      * @param args the command line arguments

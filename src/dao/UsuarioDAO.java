@@ -30,6 +30,12 @@ public class UsuarioDAO implements UsuarioDA {
     public UsuarioDAO() {
     }
 
+    private static final UsuarioDAO instance = new UsuarioDAO();
+
+    public static UsuarioDAO getInstance() {
+        return instance;
+    }
+
     public Usuario iniciarSesion(Usuario usuario) {
         try{
         ResultSet rs=null;
