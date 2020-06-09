@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Sala;
+import modelo.Usuario;
 
 /**
  *
@@ -59,8 +60,22 @@ public class SalaDAO implements SalaDA {
     }
 
     @Override
-    public boolean modificarCantidad(String identificador, int cantidad, int nuevaCantidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modificarCantidad(String nombre, int nuevaCapacidad) {
+        
+        
+        String poi = "UPDATE salas SET capacidad="+nuevaCapacidad+" WHERE nombre= '"+nombre+"'";
+        try {
+
+            ps = cin.prepareStatement(poi);
+            ps.executeUpdate();
+            return true;
+           
+
+        } catch (Exception e) {
+
+        }
+        
+        return false;
     }
 
     @Override
@@ -89,8 +104,28 @@ public class SalaDAO implements SalaDA {
     }
 
     @Override
-    public void obtenerAnfitrion(String identificador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String obtenerAnfitrion(String identificador) {
+        
+        String usuario="";
+    try{
+        ResultSet rs=null;
+        String login = "select anfitrion from salas where id="+Integer.parseInt(identificador);
+        ps=cin.prepareStatement(login);
+        rs=ps.executeQuery();
+        
+        while(rs.next()){
+        usuario=rs.getString("anfitrion");
+        }
+          
+        }
+      
+        catch(SQLException ex){
+        
+        }
+    return usuario;
+        
+         //To change body of generated methods, choose Tools | Templates.
+    
     }
 
 }
