@@ -8,9 +8,11 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 /**
@@ -33,23 +35,27 @@ public class UsuarioDAO implements UsuarioDA {
     }
 
     public Usuario iniciarSesion(Usuario usuario) {
-        try {
-            ResultSet rs = null;
-            String login = "select * from usuario where usuario='" + usuario.getNombre() + "' AND contraseña='" + usuario.getContraseña() + "'";
-            ps = cin.prepareStatement(login);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                return usuario;
-            }
-
-        } catch (SQLException ex) {
-
+        try{
+        ResultSet rs=null;
+        String login = "select * from usuario where usuario='"+usuario.getNombre()+"' AND contraseña='"+usuario.getContraseña()+"'";
+        ps=cin.prepareStatement(login);
+        rs=ps.executeQuery();
+        
+        while(rs.next()){
+        return usuario;
+        }
+          
+        }
+      
+        catch(SQLException ex){
+        
         }
         return null;
+
     }
 
     public boolean restaurarContraseña(String nombreUsuario) {
+        
         return false;
     }
 
