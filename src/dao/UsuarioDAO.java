@@ -54,6 +54,23 @@ public class UsuarioDAO implements UsuarioDA {
     }
 
     public boolean cambiarContraseña(String nombreUsuario, String contraseña, String contraseñaNueva) {
+        Usuario usuario=new Usuario();
+        usuario.setNombre(nombreUsuario);
+        usuario.setContraseña(contraseña);
+        if(iniciarSesion(usuario)!=null){
+        java.sql.Connection conectar = null;
+        String poi = "UPDATE usuario SET contraseña='"+contraseñaNueva+"' WHERE usuario='"+nombreUsuario+"'";
+        try {
+
+            ps = cin.prepareStatement(poi);
+            ps.executeUpdate();
+            return true;
+           
+
+        } catch (Exception e) {
+
+        }
+        }
         return false;
     }
 
