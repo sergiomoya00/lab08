@@ -7,6 +7,8 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.Sala;
 
@@ -15,7 +17,8 @@ import modelo.Sala;
  * @author samoy
  */
 public class SalaDAO implements SalaDA {
-     
+
+    ArrayList<Sala> array=new  ArrayList<>();
     Conexion conexion = new Conexion();
     Connection cin = conexion.getConnection();
     PreparedStatement ps;
@@ -30,7 +33,7 @@ public class SalaDAO implements SalaDA {
     }
 
     @Override
-    public Sala crearSala(Sala sala) {
+    public Sala crearSala(String identificador, String ubicacion, int capacidad, String anfitrion, int duracion, String nombreDeSala) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -41,12 +44,32 @@ public class SalaDAO implements SalaDA {
 
     @Override
     public ArrayList<Sala> cargarListaSalas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Sala sala = new Sala();
+        try {
+            ResultSet rs = null;
+            String login = "select * from sala";
+            ps = cin.prepareStatement(login);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                sala.setIdentificador(rs.getString("identificador"));
+                sala.setUbicacion(rs.getString("ubicacion"));
+                sala.setCapacidad(rs.getInt("capacidad"));
+                sala.setAnfitrion(rs.getString("anfitrion"));
+                sala.setDuracion(rs.getInt("duracion"));
+                sala.setNombreDeSala(rs.getString("nombreDeSala"));
+                array.add(sala);
+            }
+
+        } catch (SQLException ex) {
+
+        }
+        return array;
     }
 
     @Override
     public void obtenerAnfitrion(String identificador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -14,7 +14,7 @@ import modelo.Sala;
  */
 public interface SalaDA {
 
-    Sala crearSala(Sala sala);
+    Sala crearSala(String identificador, String ubicacion, int capacidad, String anfitrion, int duracion, String nombreDeSala);
 
     boolean modificarCantidad(String identificador, int cantidad, int nuevaCantidad);
 
