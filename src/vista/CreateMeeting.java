@@ -90,6 +90,11 @@ public class CreateMeeting extends javax.swing.JFrame {
         });
 
         btCrearSala.setText("crear");
+        btCrearSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCrearSalaActionPerformed(evt);
+            }
+        });
 
         btCancelar.setText("Cancelar");
 
@@ -161,6 +166,10 @@ public class CreateMeeting extends javax.swing.JFrame {
     private void txtAnfitrionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnfitrionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnfitrionActionPerformed
+
+    private void btCrearSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCrearSalaActionPerformed
+        extraerDatos();
+    }//GEN-LAST:event_btCrearSalaActionPerformed
 
     /**
      * @param args the command line arguments
