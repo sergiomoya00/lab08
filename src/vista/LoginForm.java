@@ -37,8 +37,6 @@ public class LoginForm extends javax.swing.JFrame {
         Usuario user = new Usuario(username, password);
         UsuarioDAO.getInstance().iniciarSesion(user);
     }
-    
-    
 
     public void abrirVentanaAnterior(LoginForm ventanaAnterior) {
         ventanaAnterior.setVisible(true);
@@ -84,6 +82,11 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         btIniciarLogin.setText("Iniciar Login");
+        btIniciarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIniciarLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +141,10 @@ public class LoginForm extends javax.swing.JFrame {
     private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
+    private void btIniciarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarLoginActionPerformed
+        extraerInfo();
+    }//GEN-LAST:event_btIniciarLoginActionPerformed
 
     /**
      * @param args the command line arguments
