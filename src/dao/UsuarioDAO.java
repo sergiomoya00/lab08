@@ -7,8 +7,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 /**
@@ -25,29 +29,27 @@ public class UsuarioDAO implements UsuarioDA {
     }
 
     public Usuario iniciarSesion(Usuario usuario) {
-        String insertar = "select  into equipo(idEquipo,idUsuario,presupuesto,puntos,golesFavor,golesContra,golesDiferencia,partidosJugados,partidosGanados,partidosPerdidos,emaptes,divison) values (?,?,?,?,?,?,?,?,?,?,?,?) ";
-
-        try {
-            ps = cin.prepareCall(insertar);
-            ps.setString(1, txtNombreUsuario.getText());
-            ps.setInt(2, txtContraseña.getText());
-
-            int registro = ps.executeUpdate();
-            if (registro > 0) {
-                JOptionPane.showMessageDialog(this, "Ingreso correctamente", "Bien", JOptionPane.QUESTION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Error en el inicio de sesión", "Atención", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (Exception e) {
-
-        }
-
+        try{
+        ResultSet rs=null;
+        String login = "select * from usuario where usuario='"+usuario.getNombre()+"' AND contraseña='"+usuario.getContraseña()+"'";
+        ps=cin.prepareStatement(login);
+        rs=ps.executeQuery();
+        
+        while(rs.next()){
         return usuario;
+        }
+          
+        }
+      
+        catch(SQLException ex){
+        
+        }
+        return null;
 
     }
 
     public boolean restaurarContraseña(String nombreUsuario) {
+        
         return false;
     }
 
