@@ -5,17 +5,34 @@
  */
 package vista;
 
+import dao.SalaDAO;
+
 /**
  *
  * @author jabre
  */
 public class CreateMeeting extends javax.swing.JFrame {
 
+    private String ubicacion;
+    private int capacidad;
+    private String anfitrion;
+    private int duracion;
+    private String nombreDeSala;
     /**
      * Creates new form CreateMeeting
      */
     public CreateMeeting() {
         initComponents();
+    }
+    
+    public void extraerDatos(){
+        ubicacion = txtUbicacion.getText();
+        capacidad = Integer.parseInt(txtCapacidad.getText());
+        anfitrion = txtAnfitrion.getText();
+        duracion = Integer.parseInt(txtDuracion.getText());
+        nombreDeSala = txtNombre.getText();
+        SalaDAO.getInstance().crearSala(ubicacion, capacidad, anfitrion, duracion, nombreDeSala);
+    
     }
     
     public void abrirVentanaAnterior(LoginForm ventanaAnterior) {
