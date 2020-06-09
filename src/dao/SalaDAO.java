@@ -5,10 +5,14 @@
  */
 package dao;
 
+import java.util.ArrayList;
+import modelo.Sala;
+
 /**
  *
  * @author samoy
  */
 public class SalaDAO {
     
+   
 }
