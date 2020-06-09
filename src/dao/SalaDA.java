@@ -16,9 +16,9 @@ public interface SalaDA {
 
     Sala crearSala(String identificador, String ubicacion, int capacidad, String anfitrion, int duracion, String nombreDeSala);
 
-    boolean modificarCantidad(String identificador, int cantidad, int nuevaCantidad);
+    boolean modificarCantidad(String nombre,int nuevaCantidad);
 
     ArrayList<Sala> cargarListaSalas();
 
-    void obtenerAnfitrion(String identificador);
+    String obtenerAnfitrion(String identificador);
 }
